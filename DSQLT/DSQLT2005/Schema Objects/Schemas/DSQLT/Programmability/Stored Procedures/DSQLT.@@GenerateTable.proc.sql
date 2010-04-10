@@ -7,7 +7,7 @@ CREATE PROCEDURE [DSQLT].[@@GenerateTable]
 	,@Database sysname
 	,@Print bit = 0
 AS
-	exec DSQLT.iterateDSQLTProc '@GenerateTable',@Cursor,@Database=@Database,@Print=@Print
+	exec DSQLT.iterate '@GenerateTable',@Cursor,@Database=@Database,@Print=@Print
 RETURN 0
 
 

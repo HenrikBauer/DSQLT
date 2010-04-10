@@ -8,7 +8,7 @@ CREATE PROC [DSQLT].[@CopyTable]
 as
 DECLARE @SourceDB sysname
 SET @SourceDB =DB_NAME()
-	exec DSQLT.execDSQLTProc '@CopyTable',@Schema,@Table,@SourceDB,@Print=@Print,@Database=@TargetDB
+	exec DSQLT.[Execute] '@CopyTable',@Schema,@Table,@SourceDB,@Print=@Print,@Database=@TargetDB
 RETURN
 BEGIN
 declare @Template varchar(max)

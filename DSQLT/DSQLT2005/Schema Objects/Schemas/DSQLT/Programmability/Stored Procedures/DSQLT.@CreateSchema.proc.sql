@@ -7,7 +7,7 @@ CREATE Proc [DSQLT].[@CreateSchema]
 	, @Schema sysname
 	, @Print int =0
 as
-exec DSQLT.execDSQLTProc '@CreateSchema',@Schema,@Database=@Database,@Print=@Print
+exec DSQLT.[Execute] '@CreateSchema',@Schema,@Database=@Database,@Print=@Print
 RETURN
 BEGIN
 DECLARE @Result int

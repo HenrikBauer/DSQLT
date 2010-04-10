@@ -24,7 +24,7 @@ else
 	exec DSQLT._error 'Ziel existiert bereits'
 -- falls geklappt,dann Objekt erzeugen
 if @Template is not null
-	exec DSQLT.execDSQLTProc null,@Schema,@Procedure, @Database=@Database,@Template=@Template,@Print=@Print
+	exec DSQLT.[Execute] null,@Schema,@Procedure, @Database=@Database,@Template=@Template,@Print=@Print
 else 
 	exec DSQLT._error @ErrorMsg
 END

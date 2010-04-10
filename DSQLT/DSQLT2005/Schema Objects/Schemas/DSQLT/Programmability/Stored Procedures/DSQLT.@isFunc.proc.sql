@@ -14,7 +14,7 @@ DECLARE @ResultTable TABLE(result int)
 DECLARE @Result int
 DECLARE @Template varchar(max)
 -- Template (unten zwischen BEGIN und END) holen
-exec DSQLT.execDSQLTProc '@isFunc',@Schema,@Table,@Template=@Template OUTPUT, @Print=null  -- unterdrückt die Ausführung, gibt nur an Template zurück!!
+exec DSQLT.[Execute] '@isFunc',@Schema,@Table,@Template=@Template OUTPUT, @Print=null  -- unterdrückt die Ausführung, gibt nur an Template zurück!!
 -- Template ausführen, Ergebnis über tem. Tabelle holen
 INSERT INTO @ResultTable
 	exec DSQLT._execSQL @Database,@Template,@Print

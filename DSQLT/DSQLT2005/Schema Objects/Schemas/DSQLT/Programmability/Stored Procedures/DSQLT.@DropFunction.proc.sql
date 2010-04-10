@@ -6,7 +6,7 @@ CREATE PROC [DSQLT].[@DropFunction]
 	,@Function sysname
 	,@Print int=0
 as
-	exec DSQLT.execDSQLTProc '@DropFunction',@Schema,@Function,@Print=@Print,@Database=@Database
+	exec DSQLT.[Execute] '@DropFunction',@Schema,@Function,@Print=@Print,@Database=@Database
 RETURN
 BEGIN
 DROP FUNCTION [@1].[@2]

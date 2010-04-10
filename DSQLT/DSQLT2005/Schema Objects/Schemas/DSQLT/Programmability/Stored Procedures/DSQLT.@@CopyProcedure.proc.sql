@@ -12,7 +12,7 @@ create PROCEDURE [DSQLT].[@@CopyProcedure]
 AS
 DECLARE @SourceDB sysname
 SET @SourceDB =DB_NAME()
-	exec DSQLT.iterateDSQLTProc '@CopyProcedure',@Cursor,@SourceDB,@Database=@Database,@Print=@Print
+	exec DSQLT.iterate '@CopyProcedure',@Cursor,@SourceDB,@Database=@Database,@Print=@Print
 RETURN 0
 
 

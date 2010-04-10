@@ -1,13 +1,10 @@
-﻿
+
 -- ersetzt in einem SQL-Quelltext (@Template) einen Parameter (@Parameter) durch einen Wert (@Value).
 -- für anderweitige Verwendung wurde der Parametername mit sysname definiert, obwohl nchar(2) für @0-@9 ausreichen würde.
 
-CREATE proc [DSQLT].[_replaceParameter]
-	@Parameter nvarchar(max)
-	,@Template nvarchar(max) OUTPUT
-	,@Value nvarchar(max)
-	,@Pos int OUTPUT
-as
+CREATE PROCEDURE [DSQLT].[_replaceParameter]
+@Parameter NVARCHAR (MAX), @Template NVARCHAR (MAX) OUTPUT, @Value NVARCHAR (MAX), @Pos INT OUTPUT
+AS
 BEGIN
 DECLARE @Pattern nvarchar(max)
 DECLARE @From int
@@ -45,9 +42,18 @@ if @Pos between 1 and LEN(@Template)-1
 			SET @Value=DSQLT.QuoteSB(@Parameter)  -- Parameter bleibt erhalten mit Klammern
 		END
 	END
+	IF @To=0 and @From>0
+	BEGIN
+		SET @Pattern='"('+@Parameter+'"="'+@Parameter+'")'
+		IF SUBSTRING(@Template,@From,LEN(@Pattern)) = @Pattern
+		BEGIN
+			SET @To=@From+LEN(@Pattern)-1
+			-- Value bleibt erhalten
+		END
+	END
 	
 	-- 1 zurück
-	IF @To=0 and @From>0
+	IF @To=0 --and @From>0
 		SET @From=@Pos-1
 		
 	IF @To=0 and @From>0
@@ -96,7 +102,7 @@ if @Pos between 1 and LEN(@Template)-1
 		END
 	END
 	-- ab Position
-	IF @To=0 and @From>0
+	IF @To=0 --and @From>0
 		SET @From=@Pos  
 		
 	IF @To=0 and @From>0
