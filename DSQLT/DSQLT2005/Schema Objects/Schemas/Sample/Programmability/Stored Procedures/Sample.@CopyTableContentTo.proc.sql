@@ -11,7 +11,7 @@ AS
 	Declare @4 nvarchar(max)
 	set @3 = DSQLT.ColumnList(@Schema+'.'+@Table)
 	set @4 = DB_NAME()
-	exec DSQLT.execDSQLTProc '[Sample].@CopyTableContent',@Schema,@Table,@3,@4,@Database=@Database,@Print=@Print
+	exec DSQLT.[Execute] '[Sample].@CopyTableContent',@Schema,@Table,@3,@4,@Database=@Database,@Print=@Print
 RETURN
 BEGIN
 -- @0 = Zieldatenbank ist die aktuelle 

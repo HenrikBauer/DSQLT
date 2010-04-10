@@ -19,5 +19,5 @@ CREATE PROCEDURE [@1].[@@@2]
 	, @Database sysname =null
 	, @Print bit = 0
 AS
-exec DSQLT.iterateDSQLTProc '@1.@@2' ,@Cursor,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database=@Database,@Print=@Print
+exec DSQLT.iterate '@1.@@2' ,@Cursor,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database=@Database,@Print=@Print
 RETURN 0

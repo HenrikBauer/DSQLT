@@ -1195,12 +1195,12 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.execDSQLTProc.proc.sql">
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.execute.proc.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.iterateDSQLTProc.proc.sql">
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.iterate.proc.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
@@ -1317,5 +1317,10 @@
       <HintPath>C:\Program Files\Microsoft Visual Studio 9.0\VSTSDB\Extensions\SqlServer\2005\DBSchemas\master.dbschema</HintPath>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <NotInBuild Include="Schema Comparisons\DB_Projekt.scmp">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
   </ItemGroup>
 </Project>
