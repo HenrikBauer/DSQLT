@@ -5,6 +5,6 @@
 AS
 	Declare @Source nvarchar(max)
 	set @Source = DB_NAME()
-	exec DSQLT.iterateDSQLTProc '[Sample].[@CopyTableContentTo]',@Cursor,@Source,@Database=@Database,@Print=@Print
+	exec DSQLT.iterate '[Sample].[@CopyTableContentTo]',@Cursor,@Source,@Database=@Database,@Print=@Print
 RETURN 0
 

@@ -10,7 +10,7 @@ AS
 	if @Database is null SET @Database=DB_NAME()
 	Declare @3 nvarchar(max)
 	set @3= DSQLT.ColumnList(@Schema+'.'+@Table)
-	exec DSQLT.execDSQLTProc '[Sample].[@CopyTableContentFrom]',@Schema,@Table,@3,@Database,@Print=@Print
+	exec DSQLT.[Execute] '[Sample].[@CopyTableContentFrom]',@Schema,@Table,@3,@Database,@Print=@Print
 RETURN
 BEGIN
 -- @0 = Zieldatenbank ist die aktuelle 
