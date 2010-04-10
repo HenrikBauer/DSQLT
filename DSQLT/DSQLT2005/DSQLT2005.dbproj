@@ -58,6 +58,7 @@
   <!--Import the settings-->
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
   <ItemGroup>
+    <Folder Include="Database Backup" />
     <Folder Include="Properties\" />
     <Folder Include="Schema Objects\" />
     <Folder Include="Schema Objects\Database Level Objects\" />
@@ -1319,6 +1320,9 @@
     </ArtifactReference>
   </ItemGroup>
   <ItemGroup>
+    <NotInBuild Include="Database Backup\DSQLT.bak">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
     <NotInBuild Include="Schema Comparisons\DB_Projekt.scmp">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
