@@ -1317,6 +1317,7 @@
     <ArtifactReference Include="C:\Program Files\Microsoft Visual Studio 9.0\VSTSDB\Extensions\SqlServer\2005\DBSchemas\master.dbschema">
       <HintPath>C:\Program Files\Microsoft Visual Studio 9.0\VSTSDB\Extensions\SqlServer\2005\DBSchemas\master.dbschema</HintPath>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+      <Private>False</Private>
     </ArtifactReference>
   </ItemGroup>
   <ItemGroup>
