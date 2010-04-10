@@ -6,7 +6,7 @@ CREATE PROC [DSQLT].[@GenerateTable]
 	,@Table sysname
 	,@Print int=0
 as
-	exec DSQLT.execDSQLTProc '@GenerateTable',@Schema,@Table,@Print=@Print,@Database=@Database
+	exec DSQLT.[Execute] '@GenerateTable',@Schema,@Table,@Print=@Print,@Database=@Database
 RETURN
 BEGIN
 	DECLARE @Result int

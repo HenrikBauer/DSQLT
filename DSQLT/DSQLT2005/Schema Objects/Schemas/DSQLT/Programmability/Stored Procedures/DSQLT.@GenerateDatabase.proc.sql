@@ -7,7 +7,7 @@ CREATE PROC [DSQLT].[@GenerateDatabase]
 	 @Database sysname =null
 	, @Print bit = 0
 AS
-exec DSQLT.execDSQLTProc '@GenerateDatabase' ,@Database,@Print=@Print
+exec DSQLT.[Execute] '@GenerateDatabase' ,@Database,@Print=@Print
 RETURN 0
 BEGIN
 CREATE DATABASE [@1] ON  PRIMARY 

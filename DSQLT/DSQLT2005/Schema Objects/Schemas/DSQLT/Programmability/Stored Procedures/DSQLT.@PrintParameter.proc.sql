@@ -12,7 +12,7 @@ CREATE PROCEDURE [DSQLT].[@PrintParameter]
 	, @Database sysname =null
 	, @Print bit = 0
 AS
-exec DSQLT.execDSQLTProc '@PrintParameter' ,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database=@Database,@Print=@Print
+exec DSQLT.[Execute] '@PrintParameter' ,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database=@Database,@Print=@Print
 RETURN 0
 BEGIN
 	if '@0' = '"@0"' 	print '@0'

@@ -7,7 +7,7 @@ CREATE PROC [DSQLT].[@DropProcedure]
 	,@Procedure sysname
 	,@Print int=0
 as
-	exec DSQLT.execDSQLTProc '@DropProcedure',@Schema,@Procedure,@Print=@Print,@Database=@Database
+	exec DSQLT.[Execute] '@DropProcedure',@Schema,@Procedure,@Print=@Print,@Database=@Database
 RETURN
 BEGIN
 DROP PROCEDURE [@1].[@2]

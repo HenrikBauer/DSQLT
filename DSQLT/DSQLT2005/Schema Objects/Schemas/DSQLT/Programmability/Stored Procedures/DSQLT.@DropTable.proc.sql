@@ -7,7 +7,7 @@ CREATE PROC [DSQLT].[@DropTable]
 	,@Table sysname
 	,@Print int=0
 as
-	exec DSQLT.execDSQLTProc '@DropTable',@Schema,@Table,@Print=@Print,@Database=@Database
+	exec DSQLT.[Execute] '@DropTable',@Schema,@Table,@Print=@Print,@Database=@Database
 RETURN
 BEGIN
 DROP TABLE [@1].[@2]

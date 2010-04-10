@@ -1,23 +1,11 @@
-﻿
+
 CREATE PROCEDURE [DSQLT].[_iterateTemplate]
-	  @Cursor CURSOR VARYING OUTPUT
-	, @p1 NVARCHAR (MAX)=null
-	, @p2 NVARCHAR (MAX)=null
-	, @p3 NVARCHAR (MAX)=null
-	, @p4 NVARCHAR (MAX)=null
-	, @p5 NVARCHAR (MAX)=null
-	, @p6 NVARCHAR (MAX)=null
-	, @p7 NVARCHAR (MAX)=null
-	, @p8 NVARCHAR (MAX)=null
-	, @p9 NVARCHAR (MAX)=null
-	, @Database NVARCHAR (MAX)=null
-	, @Template NVARCHAR (MAX)=null OUTPUT
-	, @Once bit = 0  -- 0=ausführen, 1 = verketten
-	, @Print bit = 0
+@Cursor CURSOR VARYING OUTPUT, @p1 NVARCHAR (MAX)=null, @p2 NVARCHAR (MAX)=null, @p3 NVARCHAR (MAX)=null, @p4 NVARCHAR (MAX)=null, @p5 NVARCHAR (MAX)=null, @p6 NVARCHAR (MAX)=null, @p7 NVARCHAR (MAX)=null, @p8 NVARCHAR (MAX)=null, @p9 NVARCHAR (MAX)=null, @Database NVARCHAR (MAX)=null, @Template NVARCHAR (MAX)=null OUTPUT, @Create NVARCHAR (MAX)=null, @Once BIT=0, @Print BIT=0
 AS
 Begin
 DECLARE @TemplateConcat nvarchar(max)
 DECLARE @Temp nvarchar(max)
+DECLARE @TempCreate nvarchar(max)
 DECLARE @c1 nvarchar(max)
 DECLARE @c2 nvarchar(max)
 DECLARE @c3 nvarchar(max) 
@@ -31,6 +19,7 @@ DECLARE	@Count int
 
 set @TemplateConcat ='' 
 set @Temp  ='' 
+set @TempCreate  ='' 
 set	@Count = 0
 
 open @Cursor
@@ -41,6 +30,14 @@ begin
 		begin try 
 			set @count=1
 			fetch first from @Cursor into @c1
+			SET @c2=@p1
+			SET @c3=@p2
+			SET @c4=@p3
+			SET @c5=@p4
+			SET @c6=@p5
+			SET @c7=@p6
+			SET @c8=@p7
+			SET @c9=@p8
 			continue
 		end try 
 		begin catch
@@ -48,6 +45,13 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2
+			SET @c3=@p1
+			SET @c4=@p2
+			SET @c5=@p3
+			SET @c6=@p4
+			SET @c7=@p5
+			SET @c8=@p6
+			SET @c9=@p7
 			continue
 		end try 
 		begin catch
@@ -55,6 +59,12 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3
+			SET @c4=@p1
+			SET @c5=@p2
+			SET @c6=@p3
+			SET @c7=@p4
+			SET @c8=@p5
+			SET @c9=@p6
 			continue
 		end try 
 		begin catch
@@ -62,6 +72,11 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3,@c4
+			SET @c5=@p1
+			SET @c6=@p2
+			SET @c7=@p3
+			SET @c8=@p4
+			SET @c9=@p5
 			continue
 		end try 
 		begin catch
@@ -69,6 +84,10 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3,@c4,@c5
+			SET @c6=@p1
+			SET @c7=@p2
+			SET @c8=@p3
+			SET @c9=@p4
 			continue
 		end try 
 		begin catch
@@ -76,6 +95,9 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3,@c4,@c5,@c6
+			SET @c7=@p1
+			SET @c8=@p2
+			SET @c9=@p3
 			continue
 		end try 
 		begin catch
@@ -83,6 +105,8 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3,@c4,@c5,@c6,@c7
+			SET @c8=@p1
+			SET @c9=@p2
 			continue
 		end try 
 		begin catch
@@ -90,6 +114,7 @@ begin
 		end catch
 		begin try 
 			fetch first from @Cursor into @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8
+			SET @c9=@p1
 			continue
 		end try 
 		begin catch
@@ -106,17 +131,19 @@ begin
 		Break  -- erfolglos
 	END
 	IF (@@FETCH_STATUS <> 0) break  -- alle Datensätze geholt
-	SET @Temp=@Template 
 	
-	IF @Count = 1 exec DSQLT._fillTemplate @c1, @p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@Database,@Template=@Temp OUTPUT
-	IF @Count = 2 exec DSQLT._fillTemplate @c1,@c2, @p1,@p2,@p3,@p4,@p5,@p6,@p7,@Database,@Template=@Temp OUTPUT
-	IF @Count = 3 exec DSQLT._fillTemplate @c1,@c2,@c3, @p1,@p2,@p3,@p4,@p5,@p6,@Database,@Template=@Temp OUTPUT
-	IF @Count = 4 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4, @p1,@p2,@p3,@p4,@p5,@Database,@Template=@Temp OUTPUT
-	IF @Count = 5 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5, @p1,@p2,@p3,@p4,@Database,@Template=@Temp OUTPUT
-	IF @Count = 6 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6, @p1,@p2,@p3,@Database,@Template=@Temp OUTPUT
-	IF @Count = 7 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7, @p1,@p2,@Database,@Template=@Temp OUTPUT
-	IF @Count = 8 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8, @p1,@Database,@Template=@Temp OUTPUT
-	IF @Count = 9 exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database,@Template=@Temp OUTPUT
+	SET @Temp=@Template 
+	-- Prozedurrumpf mit DDL umfassen, falls Create 
+	-- wichtig: generell Parameterersetzung wie bei Template
+	if @Create is not null and (@Once=0 or @TempCreate='')  -- bei once=0 ODER beim ersten Mal
+		BEGIN
+		SET @TempCreate=@Create 
+		exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database,@Template=@TempCreate OUTPUT
+		if @Once=0	-- dann wird je Iteration eine Stored Proc generiert
+			exec DSQLT._addCreateStub @Temp OUTPUT,@Database,@TempCreate
+		END
+		
+	exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database,@Template=@Temp OUTPUT
 
 	-- ausführen oder verketten
 	IF @Once=0  -- ausführen / drucken
@@ -136,8 +163,11 @@ begin
 end
 close @Cursor
 deallocate @Cursor
+
+IF @Create is not null and @Once=1  -- einmalig Prozedurrumpf
+	exec DSQLT._addCreateStub @TemplateConcat OUTPUT,@Database,@TempCreate
+
 -- Rückgabe der Verkettung
---IF @Once=1  -- verketten
-	SET @Template =@TemplateConcat
+SET @Template =@TemplateConcat
 	
 end

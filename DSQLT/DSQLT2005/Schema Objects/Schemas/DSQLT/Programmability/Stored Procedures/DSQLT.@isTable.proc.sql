@@ -14,7 +14,7 @@ DECLARE @ResultTable TABLE(result int)
 DECLARE @Result int
 -- Template (unten zwischen BEGIN und END) ausführen und Ergebnis nach @Result
 DECLARE @Template varchar(max)
-exec DSQLT.execDSQLTProc '@isTable',@Schema,@Table,@Template=@Template OUTPUT, @Print=null
+exec DSQLT.[Execute] '@isTable',@Schema,@Table,@Template=@Template OUTPUT, @Print=null
 INSERT INTO @ResultTable
 	exec DSQLT._execSQL @Database,@Template,@Print
 SELECT TOP 1 @Result=result from @ResultTable
