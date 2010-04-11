@@ -33,8 +33,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\sql\release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
+    <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
     <TargetDatabase>DSQLT</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
