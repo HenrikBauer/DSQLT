@@ -1196,12 +1196,17 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.execute.proc.sql">
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.Execute.proc.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.iterate.proc.sql">
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.Iterate.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.License.proc.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
