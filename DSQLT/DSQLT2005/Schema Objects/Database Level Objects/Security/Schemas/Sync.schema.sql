@@ -1,3 +1,3 @@
-﻿CREATE SCHEMA [Sync]
-    AUTHORIZATION [dbo];
+/*CREATE SCHEMA [Sync]
+    AUTHORIZATION [dbo];*/
 

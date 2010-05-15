@@ -128,7 +128,7 @@ END
 if @Value is not null and (@From between 1 and LEN(@Template)) and (@To between 1 and LEN(@Template))
 	BEGIN
 		Set @Template=STUFF(@Template,@From,@To-@From+1,@Value)
-		SET @Pos=@From+len(@Value)
+		SET @Pos=@From+len(@Value)-1  -- 13.05.2010. _fillTemplate geht eine Position weiter!!
 	END
 ELSE
 	SET @Pos=0

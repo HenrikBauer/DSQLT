@@ -4,10 +4,10 @@
   <Properties>
     <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
     <AnsiNullDefault>False</AnsiNullDefault>
-    <AnsiNulls>False</AnsiNulls>
-    <AnsiPadding>False</AnsiPadding>
-    <AnsiWarnings>False</AnsiWarnings>
-    <ArithAbort>False</ArithAbort>
+    <AnsiNulls>True</AnsiNulls>
+    <AnsiPadding>True</AnsiPadding>
+    <AnsiWarnings>True</AnsiWarnings>
+    <ArithAbort>True</ArithAbort>
     <AutoClose>False</AutoClose>
     <AutoCreateStatistics>True</AutoCreateStatistics>
     <AutoShrink>False</AutoShrink>
@@ -17,7 +17,7 @@
     <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
     <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
     <CompatibilityMode>90</CompatibilityMode>
-    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <ConcatNullYieldsNull>True</ConcatNullYieldsNull>
     <DatabaseAccess>MULTI_USER</DatabaseAccess>
     <DatabaseChaining>False</DatabaseChaining>
     <DatabaseState>ONLINE</DatabaseState>
@@ -25,7 +25,7 @@
     <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
     <DefaultCursor>GLOBAL</DefaultCursor>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
-    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <EnableFullTextSearch>False</EnableFullTextSearch>
     <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
     <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
     <IsChangeTrackingOn>False</IsChangeTrackingOn>
@@ -33,9 +33,9 @@
     <NumericRoundAbort>False</NumericRoundAbort>
     <PageVerify>CHECKSUM</PageVerify>
     <Parameterization>SIMPLE</Parameterization>
-    <QuotedIdentifier>False</QuotedIdentifier>
+    <QuotedIdentifier>True</QuotedIdentifier>
     <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
-    <Recovery>FULL</Recovery>
+    <Recovery>SIMPLE</Recovery>
     <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
     <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
     <TornPageDetection>False</TornPageDetection>

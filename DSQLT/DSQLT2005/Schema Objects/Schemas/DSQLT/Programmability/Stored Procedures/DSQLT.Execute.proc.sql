@@ -4,9 +4,10 @@ CREATE PROCEDURE [DSQLT].[Execute]
 AS
 BEGIN
 SET NOCOUNT ON
-if @Database is null
-	SET @Database=DB_NAME()
-	
+--if @Database is null
+--	SET @Database=DB_NAME()
+exec DSQLT._fillDatabaseTemplate @p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database=@Database OUTPUT
+
 -- Template holen	
 if @DSQLTProc is not null  -- es kann auch ein Template direkt übergeben werden
 	exec DSQLT._getTemplate @DSQLTProc, @Template OUTPUT
