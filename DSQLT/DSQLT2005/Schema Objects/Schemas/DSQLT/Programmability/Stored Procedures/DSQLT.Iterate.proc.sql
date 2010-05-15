@@ -14,9 +14,6 @@ if @DSQLTProc is not null  -- es kann auch ein Template direkt übergeben werden
 -- Template iterieren 
 exec DSQLT._iterateTemplate @Cursor,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database,@Template OUTPUT,@Create,@Once,@Print
 
---  ausführen, falls einmalig
-if @Once=1
-	exec DSQLT._doTemplate @Database,@Template,@Print
 end
 
 

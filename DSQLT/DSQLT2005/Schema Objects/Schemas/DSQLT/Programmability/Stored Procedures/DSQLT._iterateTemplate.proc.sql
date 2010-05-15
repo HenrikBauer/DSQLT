@@ -6,6 +6,8 @@ Begin
 DECLARE @TemplateConcat nvarchar(max)
 DECLARE @Temp nvarchar(max)
 DECLARE @TempCreate nvarchar(max)
+DECLARE @TempDatabase nvarchar(max)
+DECLARE @OrgDatabase nvarchar(max)
 DECLARE @c1 nvarchar(max)
 DECLARE @c2 nvarchar(max)
 DECLARE @c3 nvarchar(max) 
@@ -21,6 +23,7 @@ set @TemplateConcat =''
 set @Temp  ='' 
 set @TempCreate  ='' 
 set	@Count = 0
+set @OrgDatabase=@Database
 
 open @Cursor
 while (1=1)
@@ -132,11 +135,16 @@ begin
 	END
 	IF (@@FETCH_STATUS <> 0) break  -- alle Datensätze geholt
 	
+	set @Database=@OrgDatabase
+		-- Parameterersetzung für Datenbanknamen
+	exec DSQLT._fillDatabaseTemplate  @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database=@Database OUTPUT
+
 	SET @Temp=@Template 
 	-- Prozedurrumpf mit DDL umfassen, falls Create 
 	-- wichtig: generell Parameterersetzung wie bei Template
 	if @Create is not null and (@Once=0 or @TempCreate='')  -- bei once=0 ODER beim ersten Mal
 		BEGIN
+		SET @TempDatabase=@Database
 		SET @TempCreate=@Create 
 		exec DSQLT._fillTemplate @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database,@Template=@TempCreate OUTPUT
 		if @Once=0	-- dann wird je Iteration eine Stored Proc generiert
@@ -148,6 +156,7 @@ begin
 	-- ausführen oder verketten
 	IF @Once=0  -- ausführen / drucken
 		exec DSQLT._doTemplate @Database,@Temp,@Print
+		
 	-- immer verketten, stört nicht
 	SET @TemplateConcat=@TemplateConcat+@Temp+DSQLT.CRLF()
 
@@ -164,8 +173,13 @@ end
 close @Cursor
 deallocate @Cursor
 
-IF @Create is not null and @Once=1  -- einmalig Prozedurrumpf
-	exec DSQLT._addCreateStub @TemplateConcat OUTPUT,@Database,@TempCreate
+--  ausführen, falls einmalig
+if @Once=1
+	BEGIN
+	IF @Create is not null  -- einmalig Prozedurrumpf
+		exec DSQLT._addCreateStub @TemplateConcat OUTPUT,@TempDatabase,@TempCreate
+	exec DSQLT._doTemplate @TempDatabase,@TemplateConcat,@Print
+	END
 
 -- Rückgabe der Verkettung
 SET @Template =@TemplateConcat

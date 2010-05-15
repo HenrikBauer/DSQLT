@@ -3,10 +3,10 @@
   <Version>1</Version>
   <SourceModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=.;Initial Catalog=DSQLT;Integrated Security=True;Password=;Pooling=False</ConnectionString>
+      <ConnectionString>Data Source=HENNI-NOTEBOOK\R2;Initial Catalog=DSQLT;Integrated Security=True;Password=;Pooling=False</ConnectionString>
       <DatabaseName>DSQLT</DatabaseName>
       <DataSourceGuid>{067ea0d9-ba62-43f7-9106-34930c60c528}</DataSourceGuid>
-      <Name>henni-notebook.DSQLT.dbo</Name>
+      <Name>henni-notebook\r2.DSQLT.dbo</Name>
     </ConnectionBasedModelProvider>
   </SourceModelProvider>
   <TargetModelProvider>
@@ -269,11 +269,11 @@
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Schema.Sql.SchemaModel.SqlServer.ISqlFilegroup</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.SqlServer.ISqlPermissionStatement</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>Microsoft.Data.Schema.Sql.SchemaModel.SqlServer.ISqlFile</Name>
+        <Name>Microsoft.Data.Schema.Sql.SchemaModel.SqlServer.ISqlExtendedProperty</Name>
         <Value>ExcludedType</Value>
       </PropertyElementName>
     </ConfigurationOptionsElement>

@@ -1,4 +1,4 @@
-﻿--
+--
 -- DSQLT by Henrik Bauer
 -- OpenSource licensed under Ms-PL (http://www.microsoft.com/opensource/licenses.mspx#Ms-PL)
 -- 
@@ -6,11 +6,11 @@
 --
 --------------------------------------------------------
 CREATE FUNCTION [DSQLT].[Procedures]
-(@Pattern nvarchar(max)='')
+(@Pattern NVARCHAR (MAX)='')
 RETURNS TABLE 
 AS
 RETURN 
-(
+    (
 select 
 S.name+'.'+O.name as SchemaProcedure
 ,QUOTENAME(S.name)+'.'+QUOTENAME(O.name) as SchemaProcedureQ
@@ -21,6 +21,6 @@ S.name+'.'+O.name as SchemaProcedure
 from sys.objects O
 join sys.schemas S on O.schema_id=S.schema_id
 WHERE type in (N'P', N'PC')
-and (	S.name+'.'+O.name LIKE '%'+@Pattern+'%'
-	or  QUOTENAME(S.name)+'.'+QUOTENAME(O.name) LIKE '%'+@Pattern+'%')
+and (	S.name+'.'+O.name LIKE @Pattern
+	or  QUOTENAME(S.name)+'.'+QUOTENAME(O.name) LIKE @Pattern)
 )

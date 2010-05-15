@@ -13,7 +13,7 @@
     <RootPath>
     </RootPath>
     <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
-    <ModelCollation>1031,CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchema</DefaultFileStructure>
     <DeployToDatabaseAddToServerExplorer>False</DeployToDatabaseAddToServerExplorer>
     <DeployToScript>True</DeployToScript>
@@ -45,14 +45,15 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>
+    </TargetConnectionString>
     <TargetDatabase>DSQLT</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>True</DeployToDatabase>
+    <DeployToDatabase>False</DeployToDatabase>
   </PropertyGroup>
   <!--Import the settings-->
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
@@ -935,6 +936,9 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Functions\DSQLT.Columns_2.function.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Functions\DSQLT.Concat.function.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
@@ -1029,6 +1033,9 @@
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Functions\DSQLT.QuoteSafe_1.function.sql">
+      <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Functions\DSQLT.QuoteSB.function.sql">
       <SubType>Code</SubType>
@@ -1230,6 +1237,9 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT._fillDatabaseTemplate_1.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT._fillTemplate.proc.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
@@ -1294,6 +1304,9 @@
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\Sample\Programmability\Stored Procedures\Sample.@CopyTableFrom_1.proc.sql">
+      <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\Sample\Programmability\Stored Procedures\Sample.@CopyTableTo.proc.sql">
       <SubType>Code</SubType>

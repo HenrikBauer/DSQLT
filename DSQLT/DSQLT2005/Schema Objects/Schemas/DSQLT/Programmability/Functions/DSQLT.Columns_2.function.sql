@@ -1,18 +1,26 @@
---
--- DSQLT by Henrik Bauer
--- OpenSource licensed under Ms-PL (http://www.microsoft.com/opensource/licenses.mspx#Ms-PL)
--- 
--- Description:	List of Columns
---
---------------------------------------------------------
-
-
-/*CREATE FUNCTION [DSQLT].[Columns]
-(@Object NVARCHAR(MAX)='')
-RETURNS TABLE 
+﻿create FUNCTION [DSQLT].[Columns]
+(@Object NVARCHAR (MAX)='')
+RETURNS @Result TABLE (
+	[Name] [sysname] NOT NULL,
+	[NameQ] [nvarchar](max) NOT NULL,
+	[Column] [sysname] NOT NULL,
+	[ColumnQ] [nvarchar](max) NOT NULL,
+	[ObjectColumn] [nvarchar](max) NOT NULL,
+	[ObjectColumnQ] [nvarchar](max) NOT NULL,
+	[SchemaObjectColumn] [nvarchar](max) NOT NULL,
+	[SchemaObjectColumnQ] [nvarchar](max) NOT NULL,
+	[Type] [sysname] NOT NULL,
+	[Type_Id] [tinyint] NOT NULL,
+	[is_primary_key] [int] NOT NULL,
+	[is_nullable] [bit] NOT NULL,
+	[Length] [smallint] NOT NULL,
+	[Precision] [tinyint] NOT NULL,
+	[Scale] [tinyint] NOT NULL,
+	[Order] [int] NOT NULL
+)
 AS
-RETURN 
-    (
+BEGIN
+INSERT @Result
 	select top 100 percent
 	C.[Name] as [Name]
 	,QUOTENAME(C.name) as NameQ
@@ -37,5 +45,5 @@ RETURN
 	left outer join sys.index_columns Y ON Y.object_id = I.object_id AND Y.index_id = I.index_id AND Y.column_id = C.column_id
 	where QUOTENAME(S.name)+'.'+QUOTENAME(O.name) = DSQLT.QuoteNameSB(@Object)
 	order by C.column_id
-)*/
-
+RETURN
+END
