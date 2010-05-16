@@ -1,17 +1,22 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "DSQLT2005", "DSQLT2005\DSQLT2005.dbproj", "{14FBF367-3743-41DE-9164-CBCBF51EA6AD}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "DSQLT2008R2", "DSQLT2008R2\DSQLT2008R2.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = DSQLT2005\\DSQLT2005.dbproj
 		SccProjectName1 = DSQLT2005
 		SccLocalPath1 = DSQLT2005
+		SccProjectUniqueName2 = DSQLT2008R2\\DSQLT2008R2.dbproj
+		SccProjectName2 = DSQLT2008R2
+		SccLocalPath2 = DSQLT2008R2
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,12 @@ Global
 		{14FBF367-3743-41DE-9164-CBCBF51EA6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FBF367-3743-41DE-9164-CBCBF51EA6AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14FBF367-3743-41DE-9164-CBCBF51EA6AD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
