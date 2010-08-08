@@ -1,4 +1,5 @@
 ﻿
+
 CREATE PROCEDURE [DSQLT].[_generateDSQLT]
 @Database [sysname], @Print INT=0
 AS
@@ -18,7 +19,11 @@ exec [DSQLT].[@@CopyFunction] @Cursor,@Database=@Database,@Print=@Print
 SET @Cursor= CURSOR LOCAL STATIC FOR 
 	select [Schema],[Procedure],@SourceDB from [DSQLT].[Procedures](@Schema+'.%') 
 exec [DSQLT].[@@CopyProcedure] @Cursor,@Database=@Database,@Print=@Print
-
+-- über alle Tabellen iterieren
+SET @Cursor= CURSOR LOCAL STATIC FOR 
+	select [Schema],[Table],@SourceDB from [DSQLT].Tables(@Schema+'.%') 
+exec [DSQLT].[@@CopyTable] @Cursor,@Database=@Database,@Print=@Print
+	
 set @Schema ='@1'
 -- Schema erzeugen, falls noch nicht existiert
 exec DSQLT.[@CreateSchema] @Database,@Schema,@Print

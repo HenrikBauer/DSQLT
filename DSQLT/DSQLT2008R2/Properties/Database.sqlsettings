@@ -16,16 +16,16 @@
     <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
     <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
     <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
-    <CompatibilityMode>90</CompatibilityMode>
+    <CompatibilityMode>100</CompatibilityMode>
     <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
     <DatabaseAccess>MULTI_USER</DatabaseAccess>
     <DatabaseChaining>False</DatabaseChaining>
     <DatabaseState>ONLINE</DatabaseState>
     <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
-    <DefaultCollation>Latin1_General_CI_AS_WS</DefaultCollation>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
     <DefaultCursor>GLOBAL</DefaultCursor>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
-    <EnableFullTextSearch>False</EnableFullTextSearch>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
     <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
     <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
     <IsChangeTrackingOn>False</IsChangeTrackingOn>

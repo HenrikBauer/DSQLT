@@ -1,4 +1,5 @@
 ﻿
+
 CREATE PROCEDURE [DSQLT].[_generateDatabase]
 @Database [sysname], @Print INT=0
 AS
@@ -19,6 +20,10 @@ exec DSQLT.[@GenerateSchema] @Database,'dbo',@Print=@Print
 declare @Cursor CURSOR ; SET @Cursor= CURSOR LOCAL STATIC FOR 
 	select ParameterQ from [DSQLT].[Digits] (1,9)
 exec DSQLT.[@@GenerateSchema] @Cursor,@Database=@Database,@Print=@Print
+
+-- die speziell geänderten Tabellen übertragen
+exec [DSQLT].[@CopyTable] @TargetDB=@Database , @Schema='@1' ,@Table ='@1' , @Print=@Print
+exec [DSQLT].[@CopyTable] @TargetDB=@Database , @Schema='@3' ,@Table ='@3' , @Print=@Print
 
 ---- das Schema DSQLT mit Functions und Procedures erzeugen
 exec DSQLT._generateDSQLT @Database,@Print=@Print

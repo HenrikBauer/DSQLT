@@ -1,9 +1,23 @@
 ﻿
 
-
-
 CREATE PROCEDURE [DSQLT].[_iterateTemplate]
-@Cursor CURSOR VARYING OUTPUT, @p1 NVARCHAR (MAX)=null, @p2 NVARCHAR (MAX)=null, @p3 NVARCHAR (MAX)=null, @p4 NVARCHAR (MAX)=null, @p5 NVARCHAR (MAX)=null, @p6 NVARCHAR (MAX)=null, @p7 NVARCHAR (MAX)=null, @p8 NVARCHAR (MAX)=null, @p9 NVARCHAR (MAX)=null, @Database NVARCHAR (MAX)=null, @Template NVARCHAR (MAX)=null OUTPUT, @Create NVARCHAR (MAX)=null, @Once BIT=0, @Print BIT=0
+@Cursor CURSOR VARYING OUTPUT
+, @p1 NVARCHAR (MAX)=null
+, @p2 NVARCHAR (MAX)=null
+, @p3 NVARCHAR (MAX)=null
+, @p4 NVARCHAR (MAX)=null
+, @p5 NVARCHAR (MAX)=null
+, @p6 NVARCHAR (MAX)=null
+, @p7 NVARCHAR (MAX)=null
+, @p8 NVARCHAR (MAX)=null
+, @p9 NVARCHAR (MAX)=null
+, @Database NVARCHAR (MAX)=null
+, @Template NVARCHAR (MAX)=null OUTPUT
+, @Create NVARCHAR (MAX)=null
+, @CreateParam NVARCHAR (MAX)=''
+, @UseTransaction bit = 0
+, @Once BIT=0
+, @Print BIT=0
 AS
 Begin
 DECLARE @TemplateConcat nvarchar(max)
@@ -143,6 +157,9 @@ begin
 	exec DSQLT._fillDatabaseTemplate  @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9 ,@Database=@Database OUTPUT
 
 	SET @Temp=@Template 
+	IF @Once=0  -- jedesmal mit Transaktion umfassen
+		exec [DSQLT].[_addTransaction] 	@Temp OUTPUT,@Database,@UseTransaction
+
 	-- Prozedurrumpf mit DDL umfassen, falls Create 
 	-- wichtig: generell Parameterersetzung wie bei Template
 	if @Create is not null and (@Once=0 or @TempCreate='')  -- bei once=0 ODER beim ersten Mal
@@ -179,6 +196,7 @@ deallocate @Cursor
 --  ausführen, falls einmalig
 if @Once=1
 	BEGIN
+	exec [DSQLT].[_addTransaction] 	@TemplateConcat OUTPUT,@Database,@UseTransaction
 	IF @Create is not null  -- einmalig Prozedurrumpf
 		exec DSQLT._addCreateStub @TemplateConcat OUTPUT,@TempDatabase,@TempCreate
 	exec DSQLT._doTemplate @TempDatabase,@TemplateConcat,@Print
