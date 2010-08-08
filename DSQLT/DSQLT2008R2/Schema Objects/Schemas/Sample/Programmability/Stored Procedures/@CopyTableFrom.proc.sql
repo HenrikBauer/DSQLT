@@ -1,10 +1,9 @@
-﻿
-create PROCEDURE [Sample].[@CopyTableFrom]
-
-AS
-RETURN
+﻿CREATE PROCEDURE [Sample].[@CopyTableFrom] 
+AS RETURN -- schützt Template vor versehentlichem Aufruf
 BEGIN
-truncate table [@1].[@2] 
-insert into [@1].[@2]
-select * from [@3].[@1].[@2]
+TRUNCATE TABLE [@1].[@2]
+INSERT INTO [@1].[@2]
+("@3")
+SELECT "@4" 
+FROM [@5].[@1].[@2]
 END

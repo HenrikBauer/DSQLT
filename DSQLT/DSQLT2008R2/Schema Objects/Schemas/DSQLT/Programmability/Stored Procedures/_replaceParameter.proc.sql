@@ -1,4 +1,5 @@
 ﻿
+
 CREATE PROCEDURE [DSQLT].[_replaceParameter]
 @Parameter NVARCHAR (MAX), @Template NVARCHAR (MAX) OUTPUT, @Value NVARCHAR (MAX), @Pos INT OUTPUT
 AS
@@ -42,6 +43,15 @@ if @Pos between 1 and LEN(@Template)-1
 	IF @To=0 and @From>0
 	BEGIN
 		SET @Pattern='"('+@Parameter+'"="'+@Parameter+'")'
+		IF SUBSTRING(@Template,@From,LEN(@Pattern)) = @Pattern
+		BEGIN
+			SET @To=@From+LEN(@Pattern)-1
+			-- Value bleibt erhalten
+		END
+	END
+	IF @To=0 and @From>0
+	BEGIN
+		SET @Pattern='/*'+@Parameter+'*/'
 		IF SUBSTRING(@Template,@From,LEN(@Pattern)) = @Pattern
 		BEGIN
 			SET @To=@From+LEN(@Pattern)-1
