@@ -38,20 +38,19 @@
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>False</DeployToDatabase>
+    <DeployToDatabase>True</DeployToDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
-    <TargetConnectionString>
-    </TargetConnectionString>
+    <TargetConnectionString>Data Source=.\r2;Integrated Security=True;Pooling=False</TargetConnectionString>
     <TargetDatabase>DSQLT</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
-    <DeployToDatabase>False</DeployToDatabase>
+    <DeployToDatabase>True</DeployToDatabase>
     <DeployScriptFileName>DSQLT.sql</DeployScriptFileName>
   </PropertyGroup>
   <!--Import the settings-->
@@ -1571,21 +1570,6 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40addSyncFields.proc.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Preise.view.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Kunden.view.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Artikel.view.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
