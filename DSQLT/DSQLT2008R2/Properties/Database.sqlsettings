@@ -37,7 +37,7 @@
     <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
     <Recovery>SIMPLE</Recovery>
     <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
-    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
     <SupplementalLoggingOn>False</SupplementalLoggingOn>
     <TornPageDetection>False</TornPageDetection>
     <Trustworthy>False</Trustworthy>

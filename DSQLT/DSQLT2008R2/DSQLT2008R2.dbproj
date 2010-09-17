@@ -45,14 +45,14 @@
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TargetConnectionString>
     </TargetConnectionString>
-    <TargetDatabase>
-    </TargetDatabase>
+    <TargetDatabase>DSQLT</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
     <DeploymentConfigFile>Properties\Database.sqldeployment</DeploymentConfigFile>
     <SqlCommandVariablesFile>Properties\Database.sqlcmdvars</SqlCommandVariablesFile>
     <DeployToDatabase>False</DeployToDatabase>
+    <DeployScriptFileName>DSQLT.sql</DeployScriptFileName>
   </PropertyGroup>
   <!--Import the settings-->
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
@@ -385,6 +385,28 @@
     <Folder Include="Schema Objects\Schemas\stamm\Views\Indexes\" />
     <Folder Include="Schema Objects\Schemas\stamm\Views\Triggers\" />
     <Folder Include="Schema Objects\Schemas\stamm\Views\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\TEST\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Defaults\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Functions\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Rules\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Stored Procedures\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Types\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Types\User Defined Data Types\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Types\User Defined Types CLR\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Types\User Defined Table Types\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Programmability\Types\XML Schema Collections\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Synonyms\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\Constraints\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\Keys\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Tables\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Views\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Views\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Views\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\TEST\Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -1427,21 +1449,6 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Preise.view.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Kunden.view.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
-    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Artikel.view.sql">
-      <SubType>Code</SubType>
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
     <Build Include="Schema Objects\Schemas\Sample\Tables\Sample.Target_Product.table.sql">
       <SubType>Code</SubType>
       <AnsiNulls>On</AnsiNulls>
@@ -1493,11 +1500,111 @@
     <Build Include="Schema Objects\Database Level Objects\Security\Schemas\stamm.schema.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\TEST\Programmability\Stored Procedures\TEST.DSQLT.%40TableComparisonSingleField.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\TEST\Programmability\Stored Procedures\TEST.DSQLT.%40TableComparison.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\TEST\Programmability\Stored Procedures\TEST.DSQLT.%40SyncTable.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\TEST\Programmability\Stored Procedures\TEST.DSQLT.%40PrimaryKeyCheck.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\Sample\Programmability\Stored Procedures\Sample.PrimaryKeyCheck_Product.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\Sample\Programmability\Stored Procedures\Sample.Compare_Product.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40TableComparisonWithPrimaryKeyCheck.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40TableComparisonSingleField.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40TableComparison.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40SyncTable.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40PrimaryKeyErrorCleanUp.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40PrimaryKeyCleanUp.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40PrimaryKeyCheck.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40MergeTableWithStatus.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Programmability\Stored Procedures\DSQLT.%40addSyncFields.proc.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Preise.view.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Kunden.view.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\stamm\Views\stamm.V_Produktiv_Artikel.view.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="Schema Objects\Schemas\DSQLT\Tables\DSQLT.CompareResult.table.sql">
+      <SubType>Code</SubType>
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <ArtifactReference Include="C:\Program Files\Microsoft Visual Studio 10.0\VSTSDB\Extensions\SqlServer\2008\DBSchemas\master.dbschema">
       <HintPath>C:\Program Files\Microsoft Visual Studio 10.0\VSTSDB\Extensions\SqlServer\2008\DBSchemas\master.dbschema</HintPath>
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <NotInBuild Include="Schema Comparisons\SchemaComparison1.scmp">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
   </ItemGroup>
 </Project>
