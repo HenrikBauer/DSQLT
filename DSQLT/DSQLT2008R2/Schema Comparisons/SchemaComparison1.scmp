@@ -3,10 +3,10 @@
   <Version>1</Version>
   <SourceModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=HENNI-NOTEBOOK\R2;Initial Catalog=DSQLT2;Integrated Security=True;Password=</ConnectionString>
-      <DatabaseName>DSQLT2</DatabaseName>
+      <ConnectionString>Data Source=.\r2;Initial Catalog=DSQLT;Integrated Security=True;Password=</ConnectionString>
+      <DatabaseName>DSQLT</DatabaseName>
       <DspFamilyName>sql</DspFamilyName>
-      <Name>[HENNI-NOTEBOOK\R2.DSQLT2]</Name>
+      <Name>[HENNI-NOTEBOOK\r2.DSQLT]</Name>
     </ConnectionBasedModelProvider>
   </SourceModelProvider>
   <TargetModelProvider>
