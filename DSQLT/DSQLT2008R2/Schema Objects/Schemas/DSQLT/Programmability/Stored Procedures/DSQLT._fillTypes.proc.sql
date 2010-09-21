@@ -1,8 +1,10 @@
 ﻿
+
 CREATE PROCEDURE [DSQLT].[_fillTypes]
 AS
 BEGIN
 BEGIN TRANSACTION
+truncate table [DSQLT].[Types]
 INSERT INTO [DSQLT].[Types] ([type_id], [type_name], [type_pattern], [type_default], [type_comparison], [type_concatvalue]) VALUES (34, 'image', '%t', 'null', '%v', 'cast(%v as varchar(max))')
 INSERT INTO [DSQLT].[Types] ([type_id], [type_name], [type_pattern], [type_default], [type_comparison], [type_concatvalue]) VALUES (35, 'text', '%t', '''''', '%v', 'cast(%v as varchar(max))')
 INSERT INTO [DSQLT].[Types] ([type_id], [type_name], [type_pattern], [type_default], [type_comparison], [type_concatvalue]) VALUES (36, 'uniqueidentifier', '%t', 'newid()', '%v', 'cast(%v as varchar(max))')
