@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Test
+﻿/*CREATE PROCEDURE Test
 AS
 BEGIN
 IF '#T'='#T'
@@ -49,4 +49,4 @@ select * from #T
 drop table #T
 END
 
-END
+END*/
