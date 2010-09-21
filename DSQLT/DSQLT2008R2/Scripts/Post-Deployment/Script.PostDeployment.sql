@@ -9,3 +9,4 @@ Vorlage für ein Skript nach der Bereitstellung
         SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+exec DSQLT._fillTypes
