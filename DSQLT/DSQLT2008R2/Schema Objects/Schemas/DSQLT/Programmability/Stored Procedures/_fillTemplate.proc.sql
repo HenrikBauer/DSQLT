@@ -1,4 +1,8 @@
 ﻿
+-- ersetzt in einem SQL-Quelltext (@Template) die standardisierten Parameter @0 - @9 mit den Werten aus @p0 - @p9. 
+-- das Ergebnis wird in @Template zurückgegeben.
+-- falls der Parameter @p0 NULL enthält, wird dieser mit dem aktuellen Datenbank-Namen vorbesetzt.
+-- dies entspricht der standardmäßigen Verwendung von @0.
 
 CREATE PROCEDURE [DSQLT].[_fillTemplate]
 @p1 NVARCHAR (MAX)=null, @p2 NVARCHAR (MAX)=null, @p3 NVARCHAR (MAX)=null, @p4 NVARCHAR (MAX)=null, @p5 NVARCHAR (MAX)=null, @p6 NVARCHAR (MAX)=null, @p7 NVARCHAR (MAX)=null, @p8 NVARCHAR (MAX)=null, @p9 NVARCHAR (MAX)=null, @Database NVARCHAR (MAX)=null, @Template NVARCHAR (MAX) OUTPUT

@@ -1,6 +1,4 @@
-﻿
-
-CREATE PROCEDURE [DSQLT].[@PrimaryKeyCheck]
+﻿CREATE PROCEDURE [DSQLT].[@PrimaryKeyCheck]
 	 @SourceSchema sysname = null
 	,@SourceTable sysname= null
 	,@PrimaryKeySchema sysname=null
@@ -14,8 +12,9 @@ DECLARE	@Source NVARCHAR (MAX)
 DECLARE	@Result NVARCHAR (MAX)
 DECLARE @PKTable NVARCHAR (MAX)   -- Tabelle mit Primärkeydefinition
 DECLARE	@PrimaryKeyExpression NVARCHAR (MAX)
-DECLARE	@Template NVARCHAR (MAX)=''
+DECLARE	@Template NVARCHAR (MAX)
 
+SET	@Template =''
 SET @Source=DSQLT.QuoteNameSB(@SourceSchema+'.'+@SourceTable)
 set @PKTable = DSQLT.QuoteNameSB(@PrimaryKeySchema+'.'+@PrimaryKeyTable)
 if @PKTable is null SET @PKTable=@Source

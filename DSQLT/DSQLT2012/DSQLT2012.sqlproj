@@ -144,6 +144,10 @@
     <Folder Include="Sample\Stored Procedures\" />
     <Folder Include="%401\Stored Procedures\" />
     <Folder Include="Security\" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Post-Deployment" />
+    <Folder Include="Scripts\Pre-Deployment" />
+    <Folder Include="Database Backup" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="%404\Tables\%406.sql">
@@ -1134,5 +1138,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DSQLT2012.publish.xml" />
+    <None Include="Database Backup\DSQLT.bak" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />
   </ItemGroup>
 </Project>

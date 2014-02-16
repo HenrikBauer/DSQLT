@@ -1,6 +1,4 @@
-﻿
-
-CREATE PROCEDURE [DSQLT].[@MergeTable] 
+﻿CREATE PROCEDURE [DSQLT].[@CompareTable] 
  @SourceSchema sysname = null
 ,@SourceTable sysname= null
 ,@TargetSchema sysname= null
@@ -56,42 +54,30 @@ set @6 = DSQLT.RecordCompareExpression(@2,@1,'S','T',@UseDefaultValues,@IgnoreCo
 set @7 = DSQLT.UpdateColumnList(@2,@1,'S',@IgnoreColumnList)
 set @8 = (Select TOP 1 ColumnQ from [DSQLT].[Columns] (@PKTable) where is_primary_key=1 order by [Order])
 
-exec DSQLT.[Execute] 'DSQLT.@MergeTable',@1,@2,@3,@4,@5,@6,@7,@8, @Create=@Create, @UseTransaction=@UseTransaction, @Print=@Print
+exec DSQLT.[Execute] 'DSQLT.@CompareTable',@1,@2,@3,@4,@5,@6,@7,@8, @Create=@Create, @UseTransaction=@UseTransaction, @Print=@Print
 
 RETURN -- Ab hier beginnt das eigentliche Template
 BEGIN
--- für SQL 2008
---MERGE [@1].[@1] T
---USING [@2].[@2] S 
---	on (@5=@5)
---WHEN MATCHED and (@6=@6) THEN 
---    UPDATE SET @7=@7  
---WHEN NOT MATCHED BY TARGET THEN
---    INSERT ("@3")
---    VALUES ("@4")
---WHEN NOT MATCHED BY SOURCE THEN
---    DELETE
---;
-
--- nicht mehr vorhandene Datensätze löschen
-delete [@1].[@1] 
+-- nicht mehr vorhandene Datensätze 
+select 'D' as CompareStatus, T.*
 from [@1].[@1] T
 left outer join [@2].[@2] S 
 	on (@5=@5)
 where S.[@8] is null
 
+UNION
+
 -- veränderte Datensätze updaten
-update [@1].[@1] 
-set @7=@7 
+select 'U' as CompareStatus, T.*
 from [@1].[@1] T
 join [@2].[@2] S 
 	on (@5=@5)
 where (@6=@6) 
 
--- neue Datensätze einfügen
-insert into [@1].[@1]
-("@3")
-select @4 
+UNION
+
+-- neue Datensätze 
+select 'I' as CompareStatus, S.*
 from [@1].[@1] T
 right outer join [@2].[@2] S 
 	on (@5=@5)

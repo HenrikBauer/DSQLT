@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [DSQLT].[@CopyTable]
+﻿
+
+CREATE PROCEDURE [DSQLT].[@CopyTable]
 @TargetDB [sysname], @Schema [sysname], @Table [sysname], @Print INT=0
 AS
 DECLARE @SourceDB sysname
@@ -22,4 +24,5 @@ if @rc=1  -- ja
 	INTO [@0].[@1].[@2]
 	from [@3].[@1].[@2]
 	END
+	print '@2'
 END

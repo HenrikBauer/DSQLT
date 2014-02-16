@@ -1,5 +1,4 @@
 ﻿
-
 CREATE PROCEDURE [DSQLT].[Iterate]
 @DSQLTProc NVARCHAR (MAX)=null
 , @Cursor CURSOR VARYING OUTPUT
@@ -18,6 +17,7 @@ CREATE PROCEDURE [DSQLT].[Iterate]
 , @CreateParam NVARCHAR (MAX)=''
 , @UseTransaction bit = 0
 , @Once BIT=0
+, @Deallocate BIT = 1
 , @Print BIT=0
 AS
 Begin
@@ -32,6 +32,9 @@ if @DSQLTProc is not null  -- es kann auch ein Template direkt übergeben werden
 -- Template iterieren 
 exec DSQLT._iterateTemplate @Cursor,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@Database,@Template OUTPUT
 	,@Create=@Create,@CreateParam=@CreateParam,@UseTransaction=@UseTransaction,@Once=@Once,@Print=@Print
+
+if @Deallocate = 1
+	deallocate @Cursor
 
 end
 

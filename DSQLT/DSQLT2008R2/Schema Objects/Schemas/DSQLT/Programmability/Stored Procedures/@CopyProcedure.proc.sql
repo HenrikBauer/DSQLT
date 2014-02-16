@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [DSQLT].[@CopyProcedure]
+﻿
+
+CREATE PROCEDURE [DSQLT].[@CopyProcedure]
 @TargetDB [sysname], @Schema [sysname], @Procedure [sysname], @Print INT=0
 AS
 DECLARE @SourceDB sysname
@@ -22,5 +24,6 @@ if @Template is not null
 		exec DSQLT.DSQLT.[@DropProcedure] '@0','@1','@2'
 	-- dann Objekt erzeugen
 	exec (@Template)
+	print '@2'
 	END
 END
