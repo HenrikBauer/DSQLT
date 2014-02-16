@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SchemaComparison>
-  <Version>1</Version>
+  <Version>10</Version>
   <SourceModelProvider>
     <ConnectionBasedModelProvider>
       <ConnectionString>Data Source=HENNI-NOTEBOOK\R2;Initial Catalog=DSQLT;Integrated Security=True;Password=;Pooling=False</ConnectionString>
@@ -25,7 +25,7 @@
     </SchemaCompareSettingsService>
     <ConfigurationOptionsElement>
       <PropertyElementName>
-        <Name>PlanGenerationType</Name>
+        <Name>SqlDeploymentOptions</Name>
         <Value>Sql90PlanGenerationOptions</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -33,7 +33,7 @@
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>DoNotUseAlterAssemblyStatementsToUpdateCLRTypes</Name>
+        <Name>NoAlterStatementsToChangeCLRTypes</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -93,15 +93,15 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>BlockIncrementalDeploymentIfDataLoss</Name>
+        <Name>BlockOnPossibleDataLoss</Name>
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>PerformDatabaseBackup</Name>
+        <Name>BackupDatabaseBeforeChanges</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>SingleUserMode</Name>
+        <Name>DeployDatabaseInSingleUserMode</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -253,11 +253,11 @@
         <Value>True</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>AlwaysCreateNewDatabase</Name>
+        <Name>CreateNewDatabase</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
-        <Name>GenerateDropsIfNotInProject</Name>
+        <Name>DropObjectsNotInSource</Name>
         <Value>False</Value>
       </PropertyElementName>
       <PropertyElementName>
@@ -278,4 +278,5 @@
       </PropertyElementName>
     </ConfigurationOptionsElement>
   </SchemaCompareSettingsService>
+  <SchemaCompareViewSettings />
 </SchemaComparison>
