@@ -1,4 +1,6 @@
 ﻿
+-- ersetzt in einem SQL-Quelltext (@Template) einen Parameter (@Parameter) durch einen Wert (@Value).
+-- für anderweitige Verwendung wurde der Parametername mit sysname definiert, obwohl nchar(2) für @0-@9 ausreichen würde.
 
 CREATE PROCEDURE [DSQLT].[_replaceParameter]
 @Parameter NVARCHAR (MAX), @Template NVARCHAR (MAX) OUTPUT, @Value NVARCHAR (MAX), @Pos INT OUTPUT

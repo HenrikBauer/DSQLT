@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-CREATE PROCEDURE [DSQLT].[@TableComparison]
+﻿CREATE PROCEDURE [DSQLT].[@TableComparison]
 	 @SourceSchema sysname = null
 	,@SourceTable sysname= null
 	,@TargetSchema sysname= null
@@ -24,8 +19,9 @@ DECLARE @PKTable NVARCHAR (MAX)   -- Tabelle mit Primärkeydefinition
 DECLARE	@PrimaryKeyExpression NVARCHAR (MAX)
 DECLARE	@PrimaryKeyCompareExpression NVARCHAR (MAX)
 DECLARE	@PrimaryKeyField NVARCHAR (MAX)
-DECLARE	@Template NVARCHAR (MAX)=''
+DECLARE	@Template NVARCHAR (MAX)
 
+SET	@Template =''
 SET @Source=DSQLT.QuoteNameSB(@SourceSchema+'.'+@SourceTable)
 set @Target = DSQLT.QuoteNameSB(@TargetSchema+'.'+@TargetTable)
 set @PKTable = DSQLT.QuoteNameSB(@PrimaryKeySchema+'.'+@PrimaryKeyTable)

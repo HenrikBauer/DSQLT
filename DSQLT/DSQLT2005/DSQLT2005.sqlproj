@@ -12,6 +12,7 @@
     <PostConversionCheckOutFromScc>
     </PostConversionCheckOutFromScc>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DacVersion>1.7.0.0</DacVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,7 +39,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7e149143-56d5-4d08-9ddd-1827730087fb}</ProjectGuid>
     <GenerateDatabaseFile>False</GenerateDatabaseFile>
-    <GenerateCreateScript>False</GenerateCreateScript>
+    <GenerateCreateScript>True</GenerateCreateScript>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
@@ -1352,16 +1353,6 @@
     </Build>
   </ItemGroup>
   <ItemGroup>
-    <ArtifactReference Include="C:\Program Files\Microsoft Visual Studio 12.0\\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\90\\SQLSchemas\master.dacpac">
-      <HintPath>C:\Program Files\Microsoft Visual Studio 12.0\\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\90\\SQLSchemas\master.dacpac</HintPath>
-      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
-      <Private>False</Private>
-    </ArtifactReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Database Backup\DSQLT.bak">
-      <SubType>NotInBuild</SubType>
-    </None>
     <None Include="Schema Comparisons\DB_Projekt.scmp">
       <SubType>NotInBuild</SubType>
     </None>
@@ -1378,5 +1369,12 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\90\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\90\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>True</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>

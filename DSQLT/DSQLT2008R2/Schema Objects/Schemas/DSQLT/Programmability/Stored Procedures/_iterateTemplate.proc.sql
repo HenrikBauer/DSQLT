@@ -1,5 +1,4 @@
 ﻿
-
 CREATE PROCEDURE [DSQLT].[_iterateTemplate]
 @Cursor CURSOR VARYING OUTPUT
 , @p1 NVARCHAR (MAX)=null
@@ -191,7 +190,7 @@ begin
 	IF @Count = 9 fetch next from @Cursor into @c1,@c2,@c3,@c4,@c5,@c6,@c7,@c8,@c9
 end
 close @Cursor
-deallocate @Cursor
+--deallocate @Cursor
 
 --  ausführen, falls einmalig
 if @Once=1

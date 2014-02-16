@@ -1,8 +1,4 @@
-﻿
-
-
-
-CREATE PROCEDURE [TEST].[DSQLT.@TableComparisonSingleField]
+﻿CREATE PROCEDURE [TEST].[DSQLT.@TableComparisonSingleField]
 	 @SourceSchema sysname = null
 	,@SourceTable sysname= null
 	,@TargetSchema sysname= null
@@ -23,8 +19,9 @@ DECLARE @PKTable NVARCHAR (MAX)   -- Tabelle mit Primärkeydefinition
 DECLARE	@PrimaryKeyExpression NVARCHAR (MAX)
 DECLARE	@PrimaryKeyCompareExpression NVARCHAR (MAX)
 DECLARE	@TargetPrimaryKeyExpression NVARCHAR (MAX)
-DECLARE	@Template NVARCHAR (MAX)=''
+DECLARE	@Template NVARCHAR (MAX)
 
+SET		@Template =''
 SET		@SourceSchema = 'Sample'
 SET		@SourceTable = 'Source_Product'
 SET		@TargetSchema = 'Sample'

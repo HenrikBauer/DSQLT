@@ -18,7 +18,9 @@ IF left(@DSQLTProc,1) <> '@'
 IF @schema is null
 	SET @schema = 'DSQLT'
 -- Namen wieder zusammenbasteln
-SET @DSQLTProc = @schema+'.'+@DSQLTProc
+--SET @DSQLTProc = @schema+'.'+@DSQLTProc
+SET @DSQLTProc = [DSQLT].[QuoteSB](@schema)+'.'+[DSQLT].[QuoteSB](@DSQLTProc)
+--print @DSQLTProc
 IF DSQLT.isProc(@DSQLTProc)=1
 	BEGIN
 	-- temporäre Tabelle, je Zeile Quelltext eine Tabellenzeile

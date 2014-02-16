@@ -1,6 +1,4 @@
-﻿
-
-CREATE PROCEDURE [DSQLT].[@TableComparisonWithPrimaryKeyCheck]
+﻿CREATE PROCEDURE [DSQLT].[@TableComparisonWithPrimaryKeyCheck]
 	 @SourceSchema sysname = null
 	,@SourceTable sysname= null
 	,@TargetSchema sysname= null
@@ -22,10 +20,13 @@ DECLARE	@PrimaryKeyExpression NVARCHAR (MAX)
 DECLARE	@PrimaryKeyCompareExpression NVARCHAR (MAX)
 DECLARE	@PrimaryKeyExpressionWithNull NVARCHAR (MAX)
 DECLARE	@PrimaryKeyField NVARCHAR (MAX)
-DECLARE	@TemplateFields NVARCHAR (MAX)=''
-DECLARE	@TemplatePKCheck NVARCHAR (MAX)=''
-DECLARE	@TemplatePKError NVARCHAR (MAX)=''
+DECLARE	@TemplateFields NVARCHAR (MAX)
+DECLARE	@TemplatePKCheck NVARCHAR (MAX)
+DECLARE	@TemplatePKError NVARCHAR (MAX)
 
+SET	@TemplateFields =''
+SET	@TemplatePKCheck =''
+SET	@TemplatePKError =''
 SET @Source=DSQLT.QuoteNameSB(@SourceSchema+'.'+@SourceTable)
 set @Target = DSQLT.QuoteNameSB(@TargetSchema+'.'+@TargetTable)
 set @PKTable = DSQLT.QuoteNameSB(@PrimaryKeySchema+'.'+@PrimaryKeyTable)
